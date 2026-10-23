@@ -1,0 +1,54 @@
+<?php
+
+use LaraGram\Keyboard\Make;
+use LaraGram\Support\Facades\Keyboard;
+
+if (!function_exists('inlineKeyboardMarkup')) {
+    function inlineKeyboardMarkup(...$row): \LaraGram\Keyboard\Keyboard
+    {
+        return Keyboard::inlineKeyboardMarkup(...$row);
+    }
+}
+
+if (!function_exists('replyKeyboardMarkup')) {
+    function replyKeyboardMarkup(...$row): \LaraGram\Keyboard\Keyboard
+    {
+        return Keyboard::replyKeyboardMarkup(...$row);
+    }
+}
+
+if (!function_exists('replyKeyboardRemove')) {
+    function replyKeyboardRemove($selective = false): \LaraGram\Keyboard\Keyboard
+    {
+        return Keyboard::replyKeyboardRemove($selective);
+    }
+}
+
+if (!function_exists('forceReply')) {
+    function forceReply($input_field_placeholder = '', $selective = false): \LaraGram\Keyboard\Keyboard
+    {
+        return Keyboard::forceReply($input_field_placeholder, $selective);
+    }
+}
+
+if (!function_exists('col')) {
+    function col(
+            $text, $url = null, $callback_data = null, $web_app = null, $login_url = null, $switch_inline_query = null,
+            $switch_inline_query_current_chat = null, $switch_inline_query_chosen_chat = null, $callback_game = null,
+            $pay = null, $request_user = null, $request_chat = null, $request_contact = null, $request_location = null,
+            $request_poll = null, $copy_text = null, $icon_custom_emoji_id = null, $style = null,
+            $request_managed_bot = null, $disabled = null
+    ): array
+    {
+        return array_filter(get_defined_vars(), function ($e) {
+            return !is_null($e);
+        });
+    }
+}
+
+if (!function_exists('row')) {
+    function row(...$col): array
+    {
+        return Make::row(...$col);
+    }
+}
